@@ -6,7 +6,6 @@
     "watch": "webpack-dev-server --config webpack.dev.js",
     "test": "jest",
     "lint": "eslint ."
-
   },
   "jest": {
     "moduleNameMapper": {
