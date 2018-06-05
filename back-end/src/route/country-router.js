@@ -70,4 +70,15 @@ countryRouter.delete('/api/countries/:id', (request, response, next) => {
     });
 });
 
+
+countryRouter.delete('/api/countries', (request, response, next) => {
+  return Country.remove()
+    .then((country) => {
+      if (!country) {
+        return next(new HttpErrors(404, 'No country to remove.'));
+      }
+      return response.sendStatus(204);
+    });
+});
+
 module.exports = countryRouter;

@@ -11,7 +11,11 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { countries, countryCreate, countryDelete } = this.props;
+    const { 
+      countries,
+      countryCreate,
+      countryDelete,
+    } = this.props;
     return (
       <div className="dashboard">
         <h2>Countries and Places App</h2>
@@ -24,7 +28,7 @@ class Dashboard extends React.Component {
             return (
             <div key={country._id}>
               <p>{country.title}</p>
-              <button onClick={() => countryDelete}>X</button>
+              <button onClick={() => countryDelete(country)}>X</button>
             </div>
           );
         })

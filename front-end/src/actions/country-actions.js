@@ -39,7 +39,9 @@ const countryCreateRequest = country => (dispatch) => {
 };
 
 const countryDeleteRequest = country => (dispatch) => {
-  return superagent.delete(`${API_URL}/api/countries/${country._id}`)
+  // return superagent.delete(`${API_URL}/api/countries/${country._id}`)
+  return superagent.delete(`${API_URL}/api/countries`)
+
     .then((response) => {
       dispatch(countryDelete(country));
       return response;
