@@ -38,6 +38,15 @@ const countryCreateRequest = country => (dispatch) => {
     });
 };
 
+const countryUpdateRequest = country => (dispatch) => {
+  return superagent.post(`${API_URL}/api/countries`)
+    .send(country)
+    .then((response) => {
+      dispatch(countryUpdate(response.body));
+      return response;
+    });
+};
+
 const countryDeleteRequest = country => (dispatch) => {
   // return superagent.delete(`${API_URL}/api/countries/${country._id}`)
   return superagent.delete(`${API_URL}/api/countries`)
@@ -53,5 +62,6 @@ export {
   countryCreate,
   countryUpdate,
   countryCreateRequest,
+  countryUpdateRequest,
   countryDeleteRequest,
 };

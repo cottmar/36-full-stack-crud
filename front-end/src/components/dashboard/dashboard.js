@@ -15,6 +15,7 @@ class Dashboard extends React.Component {
       countries,
       countriesFetch, // eslint-disable-line
       countryCreate,
+      countryUpdate,
       countryDelete,
     } = this.props;
     return (
@@ -29,6 +30,10 @@ class Dashboard extends React.Component {
             return (
             <div key={country._id}>
               <p>{country.title}</p>
+            <CountryForm
+              country={country}
+              onComplete={countryUpdate}
+              buttonText='Update'/>
               <button onClick={() => countryDelete(country)}>X</button>
             </div>
           );
@@ -42,6 +47,7 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   countriesFetch: PropTypes.func,
   countryCreate: PropTypes.func,
+  countryUpdate: PropTypes.func,
   countryDelete: PropTypes.func,
   countries: PropTypes.array,
 };
@@ -55,6 +61,7 @@ const mapStatesToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   countriesFetch: () => dispatch(countryActions.countriesFetchRequest()),
   countryCreate: country => dispatch(countryActions.countryCreateRequest(country)),
+  countryUpdate: country => dispatch(countryActions.countryUpdateRequest(country)),
   countryDelete: country => dispatch(countryActions.countryDeleteRequest(country)),
 });
 
