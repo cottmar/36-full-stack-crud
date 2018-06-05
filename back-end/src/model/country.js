@@ -1,16 +1,21 @@
 'use strict';
 
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const countrySchema = mongoose.Schema({
+  title: {
+    type: String,
+    // require: true,
+  },
   region: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
   },
   state: {
     type: String,
-    required: true,
+    // required: true,
   },
   city: {
     type: String,
@@ -20,11 +25,13 @@ const countrySchema = mongoose.Schema({
     default: () => new Date(),
   },
  
-  cards: [
+  places: [
     {
       type: mongoose.Schema.Types.ObjectId, ref: 'place',
     },
   ],
 });
 
-export default mongoose.model('country', countrySchema);
+module.exports = mongoose.model('country', countrySchema);
+
+// export default mongoose.model('country', countrySchema);

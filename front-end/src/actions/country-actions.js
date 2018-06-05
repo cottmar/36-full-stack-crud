@@ -22,7 +22,7 @@ const countryDelete = country => ({
 
 // async functions
 const countriesFetchRequest = () => (dispatch) => {
-  return superagent.get(`${API_URL}/api/lists`)
+  return superagent.get(`${API_URL}/api/countries`)
     .then((response) => {
       dispatch(countriesFetch(response.body));
       return response; // don't have to return response, but nice to have in case of testing
@@ -30,7 +30,7 @@ const countriesFetchRequest = () => (dispatch) => {
 };
 
 const countryCreateRequest = country => (dispatch) => {
-  return superagent.post(`${API_URL}/api/lists`)
+  return superagent.post(`${API_URL}/api/countries`)
     .send(country)
     .then((response) => {
       dispatch(countryCreate(response.body));
@@ -39,11 +39,17 @@ const countryCreateRequest = country => (dispatch) => {
 };
 
 const countryDeleteRequest = country => (dispatch) => {
-  return superagent.delete(`${API_URL}/api/lists/${country._id}`)
+  return superagent.delete(`${API_URL}/api/countries/${country._id}`)
     .then((response) => {
       dispatch(countryDelete(country));
       return response;
     });
 };
 
-export { countriesFetchRequest, countryCreateRequest, countryDeleteRequest };
+export {
+  countriesFetchRequest,
+  countryCreate,
+  countryUpdate,
+  countryCreateRequest,
+  countryDeleteRequest,
+};

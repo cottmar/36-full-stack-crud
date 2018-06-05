@@ -1,14 +1,17 @@
 'use strict';
 
-import mongoose from 'mongoose';
-import HttpError from 'http-errors';
-import Country from './country';
+const mongoose = require('mongoose');
+const HttpError = require('http-errors');
+const Country = require('./country');
 
 const placeSchema = mongoose.Schema({
+  // title: {
+  //   type: String, // maybe no
+  // },
   region: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
   },
   state: {
     type: String,
@@ -54,4 +57,5 @@ const placePostHook = (document, done) => {
 placeSchema.pre('save', placePreHook);
 placeSchema.post('remove', placePostHook);
 
-export default mongoose.model('place', placeSchema);
+module.exports = mongoose.model('place', placeSchema);
+// export default mongoose.model('place', placeSchema);
