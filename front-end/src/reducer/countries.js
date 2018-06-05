@@ -1,5 +1,3 @@
-// is item the many ? so place ??? 
-
 import { validateCountry } from '../utils';
 
 const emptyState = [];
@@ -20,4 +18,4 @@ export default (state = emptyState, { type, payload }) => {
     default:
       return state;
   }
-}
+};
