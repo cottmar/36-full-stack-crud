@@ -33,16 +33,18 @@ const countryCreateRequest = country => (dispatch) => {
   return superagent.post(`${API_URL}/api/countries`)
     .send(country)
     .then((response) => {
+      // now that we are back from an async operation, the goal is to
+      // update the store using a sync action
       dispatch(countryCreate(response.body));
       return response;
     });
 };
 
 const countryUpdateRequest = country => (dispatch) => {
-  return superagent.post(`${API_URL}/api/countries`)
+  return superagent.put(`${API_URL}/api/countries/${country._id}`)
     .send(country)
     .then((response) => {
-      dispatch(countryUpdate(response.body));
+      dispatch(countryUpdate(country));
       return response;
     });
 };
