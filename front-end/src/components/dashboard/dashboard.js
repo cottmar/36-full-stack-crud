@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
   render() {
     const { 
       countries,
+      countriesFetch, // eslint-disable-line
       countryCreate,
       countryDelete,
     } = this.props;
@@ -40,9 +41,9 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   countriesFetch: PropTypes.func,
-  countriesCreate: PropTypes.func,
-  countriesDelete: PropTypes.func,
-  todos: PropTypes.array,
+  countryCreate: PropTypes.func,
+  countryDelete: PropTypes.func,
+  countries: PropTypes.array,
 };
 
 const mapStatesToProps = (state) => {
