@@ -28,7 +28,7 @@ export default class CountryForm extends React.Component {
           this.setState(defaultState);
         })
         .catch((error) => {
-          console.error('COUNTRY FORM ERROR: ', error);
+          console.error('COUNTRY FORM ERROR: ', error); // eslint-disable-line
           this.setState({ error });
         });
     }
